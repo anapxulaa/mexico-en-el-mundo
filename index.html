@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- ============================================================
+       MÉXICO EN EL MUNDO — Proyecto de Humanidades Digitales
+       Autora: Ana Paula Galindo · 2026
+       Descripción: Sitio web académico que analiza cómo se construye
+       la imagen de México en el exterior usando herramientas digitales:
+       Voyant Tools (análisis de corpus), TimelineJS (línea del tiempo)
+       y Leaflet (mapa interactivo).
+       Creado con apoyo de IA generativa (Claude, Anthropic).
+  ============================================================ -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>México en el mundo</title>
@@ -10,6 +19,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
 
   <style>
+    /* ============================================================
+       ESTILOS GLOBALES
+       Se definen variables CSS (colores, fuentes, sombras) que se
+       reutilizan en todo el sitio para mantener consistencia visual.
+       La paleta usa colores mexicanos: terracotta, dorado, verde.
+    ============================================================ */
     :root {
       --cream:        #f5ede0;
       --warm-white:   #fdf8f2;
@@ -418,6 +433,9 @@
 
 <body>
 
+  <!-- BARRA DE NAVEGACIÓN FIJA
+       Contiene el nombre del proyecto y los enlaces a cada sección.
+       En móvil se convierte en un menú hamburguesa (controlado por JS). -->
   <nav>
     <div class="container">
       <span class="nav-brand">México <span>en el mundo</span></span>
@@ -436,7 +454,11 @@
 
   <main>
 
-    <!-- HERO -->
+    <!-- ============================================================
+         SECCIÓN HERO (INICIO)
+         Primera pantalla visible. Contiene título, subtítulo y descripción
+         general del proyecto. Usa CSS Grid para layout de dos columnas.
+    ============================================================ -->
     <section id="inicio">
       <div class="container">
         <div class="hero-inner">
@@ -467,7 +489,12 @@
       </div>
     </section>
 
-    <!-- INTRODUCCIÓN -->
+    <!-- ============================================================
+         SECCIÓN INTRODUCCIÓN
+         Marco teórico del proyecto. Explica el concepto de imagen-país
+         y soft power (Joseph Nye). Incluye una cita académica en blockquote
+         y una imagen ilustrativa.
+    ============================================================ -->
     <section id="introduccion">
       <div class="container">
         <div class="section-header reveal">
@@ -525,7 +552,15 @@
       </div>
     </section>
 
-    <!-- VOYANT -->
+    <!-- ============================================================
+         SECCIÓN VOYANT TOOLS — ANÁLISIS DE CORPUS
+         Contiene:
+         - Texto de análisis de resultados (2 párrafos en grid)
+         - iframe embebido de Voyant Tools con el corpus de AP News
+           (nube de palabras Cirrus, interactiva)
+         - Metodología + gráfica de barras lado a lado (grid 2 columnas)
+         El corpus son 85 artículos de AP News buscando "Mexico" (2025-2026)
+    ============================================================ -->
     <section id="voyant">
       <div class="container">
         <div class="section-header reveal">
@@ -546,7 +581,7 @@
         </div>
         <!-- CIRRUS FULL WIDTH -->
         <div class="voyant-img-wrap reveal" style="margin-bottom:24px;">
-          <iframe style="width:100%; height:460px; border:none; display:block;" src="https://voyant-tools.org/tool/Cirrus/?stopList=keywords-8284f1f78c558f9828d05d930477524f&whiteList=&visible=75&corpus=6d29d63769348ccac098d9a197b71c59" allowfullscreen></iframe>
+          <iframe style="width:100%; height:460px; border:none; display:block;" src="https://voyant-tools.org/tool/Cirrus/?view=Cirrus&stopList=keywords-a8d1f4f0e3f9f909922c1a4f3ac02fdd&corpus=2c9cf3c705fb0569afff9672d8005d17" allowfullscreen></iframe>
           <div class="voyant-caption">Cirrus · Voyant Tools · Corpus AP News "Mexico" · 85 artículos · 908 términos · 2025–2026</div>
         </div>
         <!-- METODOLOGÍA + BARRAS LADO A LADO -->
@@ -579,7 +614,13 @@
     </section>
 
     <!-- LÍNEA DEL TIEMPO -->
-    <!-- LÍNEA DEL TIEMPO -->
+    <!-- ============================================================
+         SECCIÓN LÍNEA DEL TIEMPO
+         iframe de TimelineJS (Knight Lab) embebido desde Google Sheets.
+         Muestra 13 eventos históricos que marcaron la imagen de México
+         en el mundo, desde 1910 hasta 2026.
+         Los datos se editan en Google Sheets y se publican automáticamente.
+    ============================================================ -->
     <section id="timeline">
       <div class="container">
         <div class="section-header reveal">
@@ -598,7 +639,15 @@
       </div>
     </section>
 
-    <!-- MAPA -->
+    <!-- ============================================================
+         SECCIÓN MAPA INTERACTIVO
+         Mapa construido con Leaflet.js (biblioteca de mapas open source).
+         Carga los tiles (imágenes del mapa) desde ESRI World Street Map.
+         Muestra 6 ciudades clave de presencia cultural mexicana en el mundo
+         con marcadores animados y popups descriptivos.
+         También marca Ciudad de México, Oaxaca y Querétaro como origen.
+         Leaflet se carga dinámicamente para mejorar velocidad de carga.
+    ============================================================ -->
     <section id="mapa">
       <div class="container">
         <div class="section-header reveal">
@@ -685,6 +734,9 @@
 
   </main>
 
+  <!-- PIE DE PÁGINA
+       Contiene nombre del proyecto, autora y año.
+       Fondo oscuro para contraste con el resto del sitio. -->
   <footer>
     <div class="container">
       <div class="footer-inner">
@@ -698,6 +750,14 @@
   </footer>
 
   <script>
+    /* ============================================================
+       JAVASCRIPT DEL SITIO
+       Tres funciones principales:
+       1. Menú móvil: abre/cierra el menú hamburguesa en pantallas pequeñas
+       2. Scroll reveal: anima los elementos al hacer scroll (IntersectionObserver)
+       3. Nav activo: resalta el enlace del nav según la sección visible
+       4. Leaflet: carga el mapa interactivo con los marcadores de ciudades
+    ============================================================ */
     // Menú móvil
     const toggle = document.getElementById('navToggle');
     const navLinks = document.getElementById('navLinks');
@@ -778,3 +838,5 @@
 
 </body>
 </html>
+
+  
